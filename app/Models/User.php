@@ -41,7 +41,17 @@ class User extends Authenticatable
     'email_verified_at' => 'datetime',
   ];
 
+  public function adminlte_image(){
+    return '/user.png';
+  }
+
+  public function adminlte_profile_url(){
+    return 'user/' . auth()-> user()-> id;
+  }
+
   public function posts(){
     return $this-> hasMany(Post::class);
   }
+
+
 }

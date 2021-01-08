@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Post;
+use App\Models\User;
 
-class PostController extends Controller
+class UserController extends Controller
 {
   /**
    * Display a listing of the resource.
@@ -14,9 +14,9 @@ class PostController extends Controller
    */
   public function index()
   {
-    $posts = Post::paginate();
+    $users = User::all();
 
-    return view('post.index', ['posts' => $posts]);
+    return view('user.index', ['users' => $users]);
   }
 
   /**
@@ -26,7 +26,7 @@ class PostController extends Controller
    */
   public function create()
   {
-
+      //
   }
 
   /**

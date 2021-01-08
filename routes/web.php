@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
+Route::middleware(['auth'])->group(function () {
+  Route::get('/', function () {
     return view('home');
-})-> middleware('auth');
-
+  });
+  Route::resource('posts', PostController::class);
+  Route::resource('users', UserController::class)-> middleware('can:users');
+});
 Auth::routes();
