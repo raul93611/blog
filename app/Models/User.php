@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Role;
 
 class User extends Authenticatable
 {
@@ -41,6 +42,10 @@ class User extends Authenticatable
     'email_verified_at' => 'datetime',
   ];
 
+  public function role(){
+    return $this-> belongsTo(Role::class);
+  }
+
   public function adminlte_image(){
     return '/user.png';
   }
@@ -52,6 +57,4 @@ class User extends Authenticatable
   public function posts(){
     return $this-> hasMany(Post::class);
   }
-
-
 }

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Role;
 
 class UserSeeder extends Seeder
 {
@@ -16,10 +17,10 @@ class UserSeeder extends Seeder
   public function run()
   {
     User::factory()-> create([
+      'role_id' => Role::$ADMIN,
       'name' => 'admin',
       'email' => 'admin@mail.com',
       'password' => bcrypt('12345678'),
-      'role' => 'admin',
     ]);
 
     User::factory()-> hasPosts(3)-> count(10)-> create();

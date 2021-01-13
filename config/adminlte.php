@@ -237,7 +237,7 @@ return [
         'text' => 'Index',
         'url' => 'users',
         'icon' => 'fas fa-fw fa-users',
-        'can' => 'admin'
+        'can' => 'users'
       ],
       [
         'header' => 'POSTS',
