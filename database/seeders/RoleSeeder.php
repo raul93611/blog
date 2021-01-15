@@ -25,5 +25,11 @@ class RoleSeeder extends Seeder
       'name' => 'User',
       'description' => 'Regular user'
     ]);
+
+    Role::factory()-> create([
+      'key' => 'guest',
+      'name' => 'Guest',
+      'description' => 'Guest'
+    ]);
   }
 }

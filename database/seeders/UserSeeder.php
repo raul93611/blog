@@ -17,7 +17,6 @@ class UserSeeder extends Seeder
   public function run()
   {
     User::factory()-> create([
-      'role_id' => Role::$ADMIN,
       'name' => 'admin',
       'email' => 'admin@mail.com',
       'password' => bcrypt('12345678'),

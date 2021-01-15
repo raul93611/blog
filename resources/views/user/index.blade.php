@@ -23,7 +23,11 @@
               <tr>
                 <td>{{ $user-> name }}</td>
                 <td>{{ $user-> email }}</td>
-                <td>{{ $user-> role-> name }}</td>
+                <td>
+                  @foreach ($user-> roles as $key => $role)
+                    {{ $role-> name }}
+                  @endforeach
+                </td>
               </tr>
             @endforeach
           </tbody>

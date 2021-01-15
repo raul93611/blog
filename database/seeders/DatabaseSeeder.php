@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\PostSeeder;
+use Database\Seeders\RoleUserSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,7 +19,8 @@ class DatabaseSeeder extends Seeder
     $this->call([
       RoleSeeder::class,
       UserSeeder::class,
-      PostSeeder::class
+      PostSeeder::class,
+      RoleUserSeeder::class
     ]);
   }
 }
