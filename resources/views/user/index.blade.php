@@ -16,6 +16,7 @@
               <th scope="col">Name</th>
               <th scope="col">Email</th>
               <th scope="col">Role</th>
+              <th scope="col">Options</th>
             </tr>
           </thead>
           <tbody>
@@ -27,6 +28,14 @@
                   @foreach ($user-> roles as $key => $role)
                     {{ $role-> name }}
                   @endforeach
+                </td>
+                <td>
+                  <a type="button" href="{{ route('users.edit', $user) }}" class="btn btn-outline-info btn-sm">Edit</a>
+                  <form class="d-inline" action="{{ route('users.destroy', $user) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                  </form>
                 </td>
               </tr>
             @endforeach

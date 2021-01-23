@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
 {
+  public function __construct()
+  {
+    $this-> middleware('can:users')-> except(['show', 'edit', 'update']);
+  }
+
   /**
    * Display a listing of the resource.
    *
@@ -46,9 +52,10 @@ class UserController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function show($id)
+  public function show(User $user)
   {
-      //
+    $this-> authorize('show', $user);
+    return view('user.show', ['user' => $user]);
   }
 
   /**
@@ -57,9 +64,10 @@ class UserController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function edit($id)
+  public function edit(User $user)
   {
-      //
+    $this-> authorize('edit', $user);
+    return view('user.edit', ['user' => $user]);
   }
 
   /**
@@ -69,9 +77,12 @@ class UserController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
+  public function update(UpdateUserRequest $request, User $user)
   {
-      //
+    $this-> authorize('update', $user);
+    $user-> update($request-> all());
+
+    return back()-> with('info', 'User updated.');
   }
 
   /**
@@ -80,8 +91,11 @@ class UserController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
+  public function destroy(User $user)
   {
-      //
+    $user-> posts()-> delete();
+    $user-> roles()-> detach();
+    $user-> delete();
+    return back();
   }
 }

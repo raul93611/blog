@@ -19,6 +19,6 @@ Route::middleware(['auth'])->group(function () {
     return view('home');
   });
   Route::resource('posts', PostController::class);
-  Route::resource('users', UserController::class)-> middleware('can:users');
+  Route::resource('users', UserController::class);
 });
 Auth::routes();

@@ -42,8 +42,20 @@ class User extends Authenticatable
     'email_verified_at' => 'datetime',
   ];
 
+  public function isAdministrator(){
+    foreach ($this-> roles as $key => $role) {
+      if($role-> key == 'admin'){
+        return true;
+      }
+    }
+  }
+
   public function roles(){
     return $this-> belongsToMany(Role::class);
+  }
+
+  public function posts(){
+    return $this-> hasMany(Post::class);
   }
 
   public function adminlte_image(){
@@ -51,10 +63,7 @@ class User extends Authenticatable
   }
 
   public function adminlte_profile_url(){
-    return 'user/' . auth()-> user()-> id;
+    return 'users/' . auth()-> user()-> id;
   }
 
-  public function posts(){
-    return $this-> hasMany(Post::class);
-  }
 }
