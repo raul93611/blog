@@ -25,9 +25,7 @@
                 <td>{{ $user-> name }}</td>
                 <td>{{ $user-> email }}</td>
                 <td>
-                  @foreach ($user-> roles as $key => $role)
-                    {{ $role-> name }}
-                  @endforeach
+                  {{ $user-> roles-> pluck('name')-> implode(', ') }}
                 </td>
                 <td>
                   <a type="button" href="{{ route('users.edit', $user) }}" class="btn btn-outline-info btn-sm">Edit</a>

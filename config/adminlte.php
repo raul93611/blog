@@ -243,9 +243,14 @@ return [
         'header' => 'POSTS',
       ],
       [
-        'text' => 'Posts',
+        'text' => 'All Posts',
         'url' => 'posts',
         'icon' => 'fas fa-fw fa-clipboard',
+      ],
+      [
+        'text' => 'Create',
+        'url' => 'posts/create',
+        'icon' => 'fas fa-fw fa-notes-medical',
       ],
       // [
       //     'text'    => 'multilevel',

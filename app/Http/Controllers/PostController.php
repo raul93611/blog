@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 
 class PostController extends Controller
 {
@@ -26,7 +28,7 @@ class PostController extends Controller
    */
   public function create()
   {
-
+    return view('post.create');
   }
 
   /**
@@ -35,9 +37,12 @@ class PostController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
+  public function store(StorePostRequest $request)
   {
-      //
+    $post = new Post($request-> all());
+    auth()-> user()-> posts()-> save($post);
+
+    return back()-> with('info', 'Post created.');
   }
 
   /**
@@ -46,9 +51,9 @@ class PostController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function show($id)
+  public function show(Post $post)
   {
-      //
+    return view('post.show', ['post' => $post]);
   }
 
   /**
@@ -57,9 +62,9 @@ class PostController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function edit($id)
+  public function edit(Post $post)
   {
-      //
+    return view('post.edit', ['post' => $post]);
   }
 
   /**
@@ -69,9 +74,11 @@ class PostController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
+  public function update(UpdatePostRequest $request, Post $post)
   {
-      //
+    $post-> update($request-> all());
+
+    return back()-> with('info', 'Post updated.');
   }
 
   /**

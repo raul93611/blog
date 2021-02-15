@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Users')
+@section('title', 'Posts')
 
 @section('content_header')
-  <h1>Users</h1>
+  <h1>Posts</h1>
 @stop
 
 @section('content')
@@ -18,10 +18,9 @@
         @endif
         <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Edit User</h3>
+            <h3 class="card-title">Create Post</h3>
           </div>
-          <form method="post" action="{{ route('users.update', $user) }}">
-            @method('PUT')
+          <form method="post" action="{{ route('posts.store') }}">
             @csrf
             @include('post.form')
           </form>

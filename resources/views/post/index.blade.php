@@ -19,10 +19,12 @@
           </div>
           <div class="card-body">
             @foreach ($posts as $key => $post)
-              <div class="callout callout-info">
-                <h5>{{ $post-> title }}</h5>
-                <p>{{ $post-> description }}</p>
-              </div>
+              <a href="{{ route('posts.show', $post) }}" class="text-body">
+                <div class="callout callout-info">
+                  <h5>{{ $post-> title }}</h5>
+                  <p>{{ $post-> description }}</p>
+                </div>
+              </a>
             @endforeach
           </div>
         </div>
