@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
+use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
@@ -33,7 +34,8 @@ class UserController extends Controller
    */
   public function create()
   {
-      //
+    $roles = Role::pluck('key', 'id');
+    return view('user.create', ['roles' => $roles]);
   }
 
   /**
@@ -42,9 +44,13 @@ class UserController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
+  public function store(StoreUserRequest $request)
   {
-      //
+    $user = new User($request-> all());
+    $user-> save();
+    $user-> roles()-> attach($request-> roles);
+
+    return back()-> with('info', 'User created.');
   }
 
   /**
@@ -82,7 +88,7 @@ class UserController extends Controller
   public function update(UpdateUserRequest $request, User $user)
   {
     $this-> authorize('update', $user);
-    $user-> update($request-> all());
+    $user-> update($request-> only('name', 'email'));
     $user-> roles()-> sync($request-> roles);
 
     return back()-> with('info', 'User updated.');

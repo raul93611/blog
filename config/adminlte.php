@@ -240,6 +240,12 @@ return [
         'can' => 'users'
       ],
       [
+        'text' => 'Create',
+        'url' => 'users/create',
+        'icon' => 'fas fa-fw fa-user-plus',
+        'can' => 'users'
+      ],
+      [
         'header' => 'POSTS',
       ],
       [
