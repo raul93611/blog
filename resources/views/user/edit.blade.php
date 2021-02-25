@@ -23,7 +23,7 @@
           <form method="post" action="{{ route('users.update', $user) }}">
             @method('PUT')
             @csrf
-            @include('post.form')
+            @include('user.form')
           </form>
         </div>
       </div>
