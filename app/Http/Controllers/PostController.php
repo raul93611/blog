@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Comment;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 
@@ -53,6 +54,7 @@ class PostController extends Controller
    */
   public function show(Post $post)
   {
+    $post = $post-> load('comments.user');
     return view('post.show', ['post' => $post]);
   }
 

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\PostSeeder;
+use Database\Seeders\CommentSeeder;
 use Database\Seeders\RoleUserSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,7 +21,8 @@ class DatabaseSeeder extends Seeder
       RoleSeeder::class,
       UserSeeder::class,
       PostSeeder::class,
-      RoleUserSeeder::class
+      RoleUserSeeder::class,
+      CommentSeeder::class
     ]);
   }
 }
