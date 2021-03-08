@@ -67,6 +67,11 @@ class User extends Authenticatable
     return $this-> morphMany(Comment::class, 'commentable');
   }
 
+  public function getMessages(){
+    $comments = auth()-> user()-> comments;
+    return $comments;
+  }
+
   public function adminlte_image(){
     return '/user.png';
   }

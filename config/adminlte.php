@@ -230,6 +230,13 @@ return [
         'topnav' => true,
       ],
       [
+        'text' => '',
+        'url' => '#',
+        'icon' => 'fas fa-fw fa-comments',
+        'topnav_right' => true,
+        'id' => 'messages'
+      ],
+      [
         'header' => 'USERS',
         'can' => 'users',
       ],

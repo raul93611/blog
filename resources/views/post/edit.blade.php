@@ -44,9 +44,9 @@
     </div>
   </div>
 @stop
-
+@include('user.messages.messages_modal')
 @section('css')
 @stop
-
 @section('js')
+  <script src="/js/main.js"></script>
 @stop

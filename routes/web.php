@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,8 @@ use App\Http\Controllers\UserController;
 |
 */
 Route::middleware(['auth'])->group(function () {
-  Route::get('/', function () {
-    return view('home');
-  });
+  Route::get('/', [HomeController::class, 'index']);
+  Route::get('/user/messages', [HomeController::class, 'userMessages']);
   Route::resource('posts', PostController::class);
   Route::resource('users', UserController::class);
 });

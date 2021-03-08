@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
     User::factory()-> create([
       'name' => 'admin',
       'email' => 'admin@mail.com',
-      'password' => bcrypt('12345678'),
+      'password' => '12345678',
     ]);
 
     User::factory()-> hasPosts(3)-> count(10)-> create();
