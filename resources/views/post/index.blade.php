@@ -21,7 +21,12 @@
             @foreach ($posts as $key => $post)
               <a href="{{ route('posts.show', $post) }}" class="text-body">
                 <div class="callout callout-info">
-                  <h5>{{ $post-> title }}</h5>
+                  <h5>
+                    {{ $post-> title }}
+                    @foreach ($post-> tags as $key => $tag)
+                      <span class="badge badge-info float-right ml-1">{{ $tag-> name }}</span>
+                    @endforeach
+                  </h5>
                   <p>{{ $post-> description }}</p>
                 </div>
               </a>

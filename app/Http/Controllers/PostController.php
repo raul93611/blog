@@ -17,7 +17,7 @@ class PostController extends Controller
    */
   public function index()
   {
-    $posts = Post::paginate();
+    $posts = Post::with('tags')-> latest()-> paginate();
 
     return view('post.index', ['posts' => $posts]);
   }
