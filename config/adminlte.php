@@ -144,8 +144,8 @@ return [
   |
   */
 
-  'sidebar_mini' => true,
-  'sidebar_collapse' => false,
+  'sidebar_mini' => 'lg',
+  'sidebar_collapse' => true,
   'sidebar_collapse_auto_size' => false,
   'sidebar_collapse_remember' => false,
   'sidebar_collapse_remember_no_transition' => true,
@@ -251,6 +251,14 @@ return [
         'url' => 'users/create',
         'icon' => 'fas fa-fw fa-user-plus',
         'can' => 'users'
+      ],
+      [
+        'header' => 'MESSAGES'
+      ],
+      [
+        'text' => 'Send',
+        'url'  => 'user/messages/create',
+        'icon' => 'fas fa-comment'
       ],
       [
         'header' => 'POSTS',

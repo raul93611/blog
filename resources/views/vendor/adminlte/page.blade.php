@@ -64,6 +64,7 @@
         @endif
 
     </div>
+    @include('user.messages.messages_modal')
 @stop
 
 @section('adminlte_js')
