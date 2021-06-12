@@ -20,7 +20,7 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/', [HomeController::class, 'index']);
   Route::get('/user/messages', [HomeController::class, 'userMessages']);
   Route::get('/user/messages/create', [CommentController::class, 'createUserMessage']);
-  Route::get('/comments', [CommentController::class, 'store'])-> name('comments.store');
+  Route::post('/comments', [CommentController::class, 'store'])-> name('comments.store');
   Route::resource('posts', PostController::class);
   Route::resource('users', UserController::class);
 });

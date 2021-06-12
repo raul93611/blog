@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Http\Requests\StoreCommentRequest;
+use App\Models\Comment;
 
 class CommentController extends Controller
 {
@@ -23,7 +26,8 @@ class CommentController extends Controller
      */
     public function createUserMessage()
     {
-      return view('user.messages.create');
+      $users = User::all();
+      return view('user.messages.create', ['users' => $users]);
     }
 
     /**
@@ -32,9 +36,14 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCommentRequest $request)
     {
-        //
+      $user = User::find($request-> user);
+      $comment = new Comment($request-> all());
+      $comment-> user_id = auth()-> user()-> id;
+      $user-> comments()-> save($comment);
+
+      return back()-> with('info', 'Message Sent.');
     }
 
     /**
