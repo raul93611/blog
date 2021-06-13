@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\StoreCommentRequest;
 use App\Models\Comment;
+use App\Notifications\UserMessageSent;
 
 class CommentController extends Controller
 {
@@ -42,6 +43,7 @@ class CommentController extends Controller
       $comment = new Comment($request-> all());
       $comment-> user_id = auth()-> user()-> id;
       $user-> comments()-> save($comment);
+      $user-> notify(new UserMessageSent($comment));
 
       return back()-> with('info', 'Message Sent.');
     }
