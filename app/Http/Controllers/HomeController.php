@@ -27,7 +27,7 @@ class HomeController extends Controller
   }
 
   public function userMessages(){
-    $messages = auth()-> user()-> comments-> load('user');
+    $messages = auth()-> user()-> comments-> load('user')-> sortDesc();
     return view('user.messages.messages', ['messages' => $messages]);
   }
 }
