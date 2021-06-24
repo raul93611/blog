@@ -41,6 +41,7 @@ class PostController extends Controller
   public function store(StorePostRequest $request)
   {
     $post = new Post($request-> all());
+    $post-> img = $request-> file('file')-> store('public');
     auth()-> user()-> posts()-> save($post);
 
     return back()-> with('info', 'Post created.');

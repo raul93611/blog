@@ -20,7 +20,7 @@
           <div class="card-header">
             <h3 class="card-title">Create Post</h3>
           </div>
-          <form method="post" action="{{ route('posts.store') }}">
+          <form method="post" enctype="multipart/form-data" action="{{ route('posts.store') }}">
             @csrf
             @include('post.form')
           </form>
@@ -29,7 +29,6 @@
     </div>
   </div>
 @stop
-@include('user.messages.messages_modal')
 @section('css')
 @stop
 @section('js')

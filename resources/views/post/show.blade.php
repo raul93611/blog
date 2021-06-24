@@ -27,6 +27,7 @@
             <a href="{{ route('posts.edit', $post) }}" class="btn btn-primary">Edit</a>
           </div>
         </div>
+        <img width="200" src="{{ asset('storage/'.$post-> img) }}" class="img-fluid" alt="">
         <h3>Comments</h3>
         <div class="timeline">
         @foreach ($post-> comments as $key => $comment)
@@ -41,7 +42,7 @@
             </div>
           </div>
         @endforeach
-      </div>
+        </div>
       </div>
     </div>
   </div>
